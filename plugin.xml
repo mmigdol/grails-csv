@@ -1,4 +1,4 @@
-<plugin name='csv' version='0.3' grailsVersion='1.2 &gt; *'>
+<plugin name='csv' version='0.3' grailsVersion='2.1.0 &gt; *'>
   <author>Les Hazlewood</author>
   <authorEmail>les@katasoft.com</authorEmail>
   <title>Grails CSV Plugin</title>
@@ -61,54 +61,45 @@
 
     </description>
   <documentation>http://grails.org/plugin/csv</documentation>
+  <type>CsvGrailsPlugin</type>
   <resources>
-    <resource>BuildConfig</resource>
-    <resource>DataSource</resource>
-    <resource>UrlMappings</resource>
     <resource>CsvTestController</resource>
   </resources>
-  <dependencies />
-  <behavior>
-    <method name='eachLine' artefact='Controller' type='au.com.bytecode.opencsv.CSVReader'>
-      <description />
-      <argument type='java.lang.Object' />
-    </method>
-    <method name='eachCsvLine' artefact='Controller' type='java.io.InputStream'>
-      <description />
-      <argument type='java.lang.Object' />
-    </method>
-    <method name='toCsvReader' artefact='Controller' type='java.io.InputStream'>
-      <description />
-      <argument type='java.lang.Object' />
-    </method>
-    <method name='eachCsvLine' artefact='Controller' type='java.io.Reader'>
-      <description />
-      <argument type='java.lang.Object' />
-    </method>
-    <method name='toCsvReader' artefact='Controller' type='java.io.Reader'>
-      <description />
-      <argument type='java.lang.Object' />
-    </method>
-    <method name='toCsvMapReader' artefact='Controller' type='java.io.Reader'>
-      <description />
-      <argument type='java.lang.Object' />
-    </method>
-    <method name='eachCsvLine' artefact='Controller' type='java.lang.String'>
-      <description />
-      <argument type='java.lang.Object' />
-    </method>
-    <method name='toCsvReader' artefact='Controller' type='java.lang.String'>
-      <description />
-      <argument type='java.lang.Object' />
-    </method>
-    <method name='toCsvMapReader' artefact='Controller' type='java.lang.String'>
-      <description />
-      <argument type='java.lang.Object' />
-    </method>
-    <method name='renderCsv' artefact='Controller' type='CsvTestController'>
-      <description />
-      <argument type='java.util.Map' />
-      <argument type='groovy.lang.Closure' />
-    </method>
-  </behavior>
+  <repositories>
+    <repository name='grailsCentral' url='http://grails.org/plugins' />
+    <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+  </repositories>
+  <dependencies>
+    <compile>
+      <dependency group='log4j' name='apache-log4j-extras' version='1.0' />
+    </compile>
+    <runtime>
+      <dependency group='org.apache.activemq' name='activemq-core' version='5.5.1' />
+      <dependency group='org.apache.lucene' name='lucene-analyzers' version='3.0.3' />
+      <dependency group='org.apache.lucene' name='lucene-core' version='3.0.3' />
+      <dependency group='mysql' name='mysql-connector-java' version='5.1.5' />
+    </runtime>
+  </dependencies>
+  <plugins>
+    <test>
+      <plugin group='org.grails.plugins' name='spock' version='0.7' />
+    </test>
+    <runtime>
+      <plugin group='org.grails.plugins' name='mail' version='1.0' />
+      <plugin group='org.grails.plugins' name='rest' version='0.7' />
+      <plugin group='org.grails.plugins' name='quartz' version='1.0-RC2' />
+      <plugin group='org.grails.plugins' name='resources' version='1.1.6' />
+      <plugin group='org.grails.plugins' name='jabber' version='0.1' />
+      <plugin group='org.grails.plugins' name='jquery' version='1.7.1' />
+      <plugin group='org.grails.plugins' name='jquery-ui' version='1.8.15' />
+      <plugin group='org.grails.plugins' name='jms' version='1.2' />
+      <plugin group='org.grails.plugins' name='hibernate' version='2.1.0' />
+    </runtime>
+    <build>
+      <plugin group='org.grails.plugins' name='tomcat' version='2.1.0' />
+    </build>
+  </plugins>
+  <runtimePluginRequirements />
+  <behavior />
 </plugin>
